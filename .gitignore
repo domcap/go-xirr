@@ -26,3 +26,7 @@ out
 # NuGet v3's project.json files produces more ignoreable files
 *.nuget.props
 *.nuget.targets
+build/amd64/darwin/xirr_lib.h
+build/amd64/darwin/xirr_lib.so
+build/amd64/linux/xirr_lib
+build/amd64/linux/xirr_lib.h

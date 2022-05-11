@@ -1,3 +1,6 @@
+//go:build linux || darwin || windows
+// +build linux darwin windows
+
 // Copyright 2018 Andrey Z. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
