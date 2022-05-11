@@ -7,9 +7,9 @@ package secant
 import (
 	. "math"
 
-	. "github.com/AndreyZWorkAccount/XIRR/numMethods"
 	. "github.com/AndreyZWorkAccount/XIRR/float.Extensions"
-	)
+	. "github.com/AndreyZWorkAccount/XIRR/numMethods"
+)
 
 type Method struct {
 	xLeftInit, xRightInit float64
@@ -21,7 +21,7 @@ func NewMethod(xLeft, xRight float64) Method{
 
 
 // NumericMethod interface implementation
-func (s *Method) Calculate(F INumericFunc, methodParams *Params) Result{
+func (s *Method) Calculate(F INumericFunc, methodParams *Params) IResult{
 	xLeft := s.xLeftInit
 	xRight := s.xRightInit
 
