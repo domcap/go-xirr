@@ -21,7 +21,6 @@ do
     fi
     GOOS=$OS_TARGET 
     GOARCH=$ARCH 
-    CGO_ENABLED=1
     go build -o $BUILD_DIR/$ARCH/$OS_TARGET/$LIB_NAME -buildmode=c-shared
 done
-cp -a $BUILD_DIR/. $DEST_FOLDER
+#cp -a $BUILD_DIR/. $DEST_FOLDER
