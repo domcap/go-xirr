@@ -31,4 +31,7 @@ GOOS=$OS_TARGET
 rm $BUILD_DIR/$ARCH/$OS_TARGET/$LIB_NAME
 go build -o $BUILD_DIR/$ARCH/$OS_TARGET/$LIB_NAME -buildmode=c-shared
 
-# cp -a $BUILD_DIR/. $DEST_FOLDER
+if [ "$OS_TARGET" == "darwin" ]
+then
+  cp -a $BUILD_DIR/. $DEST_FOLDER
+fi
