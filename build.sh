@@ -1,26 +1,34 @@
 #!/bin/bash
 set -x
 
-LIB_NAME=xirr_lib
 DEST_FOLDER=../Portal.Domcap/app/lib/finance/go/
 MAIN_FILE=main/main.go
 BUILD_DIR=build
 # MAC OS Intel 64BIT:
 ARCH=amd64
+GOARCH=$ARCH 
 
-rm -fr $BUILD_DIR
-rm -fr $DEST_FOLDER
+case "$OSTYPE" in
+  # solaris*) echo "SOLARIS" ;;
+  darwin*)
+    OS_TARGET=darwin
+    LIB_NAME=xirr_lib.so
+    ;;
+  linux*)
+    OS_TARGET=linux
+    LIB_NAME=xirr_lib
+    ;;
+  # bsd*)     echo "BSD" ;;
+  # msys*)    echo "WINDOWS" ;;
+  # cygwin*)  echo "ALSO WINDOWS" ;;
+  *)        
+    echo "unknown: $OSTYPE"
+    exit 1
+    ;;
+esac
+GOOS=$OS_TARGET 
 
-for OS_TARGET in darwin linux
-do
-    if [ "$OS_TARGET" == "darwin" ]
-    then
-      LIB_NAME=$LIB_NAME.so
-    else
-      LIB_NAME=xirr_lib
-    fi
-    GOOS=$OS_TARGET 
-    GOARCH=$ARCH 
-    go build -o $BUILD_DIR/$ARCH/$OS_TARGET/$LIB_NAME -buildmode=c-shared
-done
-#cp -a $BUILD_DIR/. $DEST_FOLDER
+rm $BUILD_DIR/$ARCH/$OS_TARGET/$LIB_NAME
+go build -o $BUILD_DIR/$ARCH/$OS_TARGET/$LIB_NAME -buildmode=c-shared
+
+# cp -a $BUILD_DIR/. $DEST_FOLDER
