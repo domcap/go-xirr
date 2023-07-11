@@ -16,7 +16,7 @@ case "$OSTYPE" in
     ;;
   linux*)
     OS_TARGET=linux
-    LIB_NAME=xirr_lib
+    LIB_NAME=xirr_lib.so
     ;;
   # bsd*)     echo "BSD" ;;
   # msys*)    echo "WINDOWS" ;;
